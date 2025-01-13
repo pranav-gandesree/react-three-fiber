@@ -1,35 +1,18 @@
 import React from 'react'
-import { Canvas } from "@react-three/fiber"
 import './App.css'
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import CubePage from './pages/Cube';
+import SphereComponent from './pages/Sphere';
 
 
-const Cube = ({position, color, size}) =>{
-  return (
-    <mesh position={position}>
-    <boxGeometry args={size}/>
-    <meshStandardMaterial color= {color}/>
-  </mesh>
-  )
-}
 const App = () => {
   return (
-    <Canvas>
-      <directionalLight position={[1,2,4]}/>
-      
-     <Cube position={[1,0,0]} color={"greeb"}/>
-      <mesh position={[-1,0,0]}>
-        <boxGeometry/>
-        <meshStandardMaterial color={"orange"}/>
-      </mesh>
-      <mesh position={[-1,2,0]}>
-        <boxGeometry/>
-        <meshStandardMaterial color={"orange"}/>
-      </mesh>
-      <mesh position={[1,2,0]}>
-        <boxGeometry/>
-        <meshStandardMaterial color={"orange"}/>
-      </mesh>
-    </Canvas>
+    <Router>
+      <Routes>
+        <Route path='/' element={<CubePage />} />
+        <Route path='/sphere' element={<SphereComponent />} />
+      </Routes>
+    </Router>
   )
 }
 
